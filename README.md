@@ -1,6 +1,10 @@
 # Guard::Erlang
 
-TODO: Write a gem description
+Guard::Erlang automatically compile your erlang file & run Module:test() from ebin
+
+Guard::Erlang watch your *.erl and compile whit changed.
+
+Guard::Erlang watch your ebin/*.beam and run Module:test() whit test/0 exist.
 
 ## Installation
 
@@ -18,7 +22,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    mkdir -p project/ebin && cd project
+    bundle guard init erlang
+    guard
 
 ## Contributing
 

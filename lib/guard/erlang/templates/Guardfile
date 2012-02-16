@@ -3,5 +3,5 @@ guard 'erlang' do
 end
 
 guard 'eunit' do
-  watch(/^ebin\/.+\.beam$/)
+  watch(%r{^ebin/(.+)\.beam$}) do |m| "#{m[1]}" end
 end

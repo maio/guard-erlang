@@ -21,8 +21,8 @@ module Guard
 
     def run_on_change(paths)
       paths.each do |x|
-        functions = `cd ebin && #{erlang_fun} a`.split
-        puts `#{eunit "a"}` if functions.include?("test/0")
+        functions = `cd ebin && #{erlang_fun} #{x}`.split
+        puts `#{eunit x}` if functions.include?("test/0")
       end
     end
 

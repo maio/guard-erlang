@@ -4,7 +4,7 @@ require File.expand_path('../lib/guard/erlang/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.name          = "guard-erlang"
   gem.version       = Guard::Erlang::VERSION
-  gem.description   = "Guard::Erlang automatically compile your erlang file"
+  gem.description   = "Guard::Erlang automatically compile your erlang file & run Module:test()"
   gem.summary       = "Guard gem for Erlang"
   gem.authors       = ["HpyHacking"]
   gem.email         = ["jackchiu.org@gmail.com"]
@@ -12,6 +12,6 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'guard', '>= 0.8.3'
 
-  gem.files         = Dir.glob('{lib}/**/*') + %w[LICENSE README.md]
+  gem.files         = Dir.glob('{bin,lib}/**/*') + %w[LICENSE README.md]
   gem.require_paths = ["lib"]
 end

@@ -1,3 +1,7 @@
 guard 'erlang' do
   watch(/^.+\.erl$/)
 end
+
+guard 'eunit' do
+  watch(/^ebin\/.+\.beam$/)
+end

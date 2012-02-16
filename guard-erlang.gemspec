@@ -12,6 +12,6 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'guard', '>= 0.8.3'
 
-  gem.files         = Dir.glob('{lib}/**/*') + %w[LICENSE README.md]
+  gem.files         = Dir.glob('{bin,lib}/**/*') + %w[LICENSE README.md]
   gem.require_paths = ["lib"]
 end

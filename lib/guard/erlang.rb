@@ -23,6 +23,7 @@ module Guard
       paths.each do |x|
         functions = `cd ebin && #{erlang_fun} #{x}`.split
         puts `#{eunit x}` if functions.include?("test/0")
+        puts "NOT FOUND test/0" unless functions.include?("test/0")
       end
     end
 
@@ -32,7 +33,7 @@ module Guard
     end
 
     def eunit(m)
-      "erl -pa #{Dir.pwd}/ebin -s init stop -noshell -eval '#{m}:test()'"
+      "erl -pa #{Dir.pwd}/ebin -eval '#{m}:test()' -s init stop -noshell"
     end
   end
 end

@@ -6,6 +6,8 @@ Guard::Erlang watch your *.erl and compile whit changed.
 
 Guard::Erlang watch your ebin/*.beam and run Module:test() whit test/0 exist.
 
+Run all action is execute "erl -pa ebin -make"
+
 ## Installation
 
 Add this line to your application's Gemfile:

@@ -3,6 +3,7 @@ require 'guard/guard'
 module Guard
   class Erlang < Guard
     def run_all
+      puts `erl -pa ebin -make`
     end
 
     def run_on_change(paths)
@@ -33,7 +34,7 @@ module Guard
     end
 
     def eunit(m)
-      "erl -pa #{Dir.pwd}/ebin -eval '#{m}:test()' -s init stop -noshell"
+      "erl -sname test -pa #{Dir.pwd}/ebin -eval '#{m}:test()' -s init stop -noshell"
     end
   end
 end

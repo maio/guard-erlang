@@ -9,9 +9,9 @@ module Guard
     def run_on_change(paths)
       paths.each do |x|
         puts "Compile erlang file #{x}"
-        output = `erlc -o ebin #{x}`
+        output = `erlc -pa ebin -o ebin #{x}`
         puts "================ \e[31mERROR\e[0m ================" unless $?.success?
-        puts output unless $?.success?
+        puts output
       end
     end
   end

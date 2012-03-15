@@ -9,7 +9,7 @@ module Guard
     def run_on_change(paths)
       paths.each do |x|
         puts "Compile erlang file #{x}"
-        output = `erlc -pa ebin -o ebin #{x}`
+        output = `erlc -pa ebin -o ebin -I include #{x}`
         puts "================ \e[31mERROR\e[0m ================" unless $?.success?
         puts output
       end
@@ -23,8 +23,13 @@ module Guard
     def run_on_change(paths)
       paths.each do |x|
         functions = `cd ebin && #{erlang_fun} #{x}`.split
-        puts `#{eunit x}` if functions.include?("test/0")
-        puts "NOT FOUND test/0" unless functions.include?("test/0")
+
+        if functions.include?("test/0")
+          puts "================ MOD \e[31m#{x}\e[0m TEST RESULT ================" 
+          puts `#{eunit x}` 
+        end
+
+        puts "================ MOD \e[31m#{x}\e[0m NOT TEST CASE ================" unless functions.include?("test/0")
       end
     end
 

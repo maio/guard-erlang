@@ -32,7 +32,9 @@ module Guard
 
         if functions.include?("test/0")
           puts "================ MOD \e[31m#{x}\e[0m TEST RESULT ================"
-          puts `#{eunit x}`
+          output = `#{eunit x}`
+          puts #{eunit x}
+
           if $?.success?
             puts "OK"
             ::Guard::Notifier.notify("summary", title: "eunit", image: :success)
@@ -40,6 +42,8 @@ module Guard
             puts "ERROR"
             ::Guard::Notifier.notify("summary", title: "eunit", image: :failed)
           end
+
+          puts output
         end
 
         puts "================ MOD \e[31m#{x}\e[0m NOT TEST CASE ================" unless functions.include?("test/0")

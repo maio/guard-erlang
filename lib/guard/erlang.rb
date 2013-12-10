@@ -33,7 +33,7 @@ module Guard
         if functions.include?("test/0")
           puts "================ MOD \e[31m#{x}\e[0m TEST RESULT ================"
           output = `#{eunit x}`
-          puts #{eunit x}
+          puts "#{eunit x}"
 
           if $?.success?
             puts "OK"

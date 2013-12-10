@@ -8,9 +8,15 @@ module Guard
 
     def run_on_change(paths)
       paths.each do |x|
+        ::Guard::Notifier.notify("summary", title: "title", image: :pending)
         puts "Compile erlang file #{x}"
         output = `erlc -DTEST -pa ebin -o ebin -I include #{x}`
-        puts "================ \e[31mERROR\e[0m ================" unless $?.success?
+        if $?.success?
+          ::Guard::Notifier.notify("summary", title: "title", image: :success)
+        else
+          puts "================ \e[31mERROR\e[0m ================"
+          ::Guard::Notifier.notify("summary", title: "title", image: :failed)
+        end
         puts output
       end
     end

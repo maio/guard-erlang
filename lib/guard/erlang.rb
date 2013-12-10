@@ -25,8 +25,8 @@ module Guard
         functions = `cd ebin && #{erlang_fun} #{x}`.split
 
         if functions.include?("test/0")
-          puts "================ MOD \e[31m#{x}\e[0m TEST RESULT ================" 
-          puts `#{eunit x}` 
+          puts "================ MOD \e[31m#{x}\e[0m TEST RESULT ================"
+          puts `#{eunit x}`
         end
 
         puts "================ MOD \e[31m#{x}\e[0m NOT TEST CASE ================" unless functions.include?("test/0")

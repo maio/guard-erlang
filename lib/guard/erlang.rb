@@ -33,6 +33,11 @@ module Guard
         if functions.include?("test/0")
           puts "================ MOD \e[31m#{x}\e[0m TEST RESULT ================"
           puts `#{eunit x}`
+          if $?.success?
+            ::Guard::Notifier.notify("summary", title: "eunit", image: :success)
+          else
+            ::Guard::Notifier.notify("summary", title: "eunit", image: :failed)
+          end
         end
 
         puts "================ MOD \e[31m#{x}\e[0m NOT TEST CASE ================" unless functions.include?("test/0")

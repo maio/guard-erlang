@@ -33,7 +33,6 @@ module Guard
         if functions.include?("test/0")
           puts "================ MOD \e[31m#{x}\e[0m TEST RESULT ================"
           output = `#{eunit x}`
-          puts "#{eunit x}"
 
           if $?.success?
             puts "OK"
@@ -56,7 +55,7 @@ module Guard
     end
 
     def eunit(m)
-      "erl -sname test -pa #{Dir.pwd}/ebin -eval '#{m}:test()' -s init stop -noshell"
+      "./rebar eunit suites=#{m}"
     end
   end
 end

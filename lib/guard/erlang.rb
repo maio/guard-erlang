@@ -34,8 +34,10 @@ module Guard
           puts "================ MOD \e[31m#{x}\e[0m TEST RESULT ================"
           puts `#{eunit x}`
           if $?.success?
+            puts "OK"
             ::Guard::Notifier.notify("summary", title: "eunit", image: :success)
           else
+            puts "ERROR"
             ::Guard::Notifier.notify("summary", title: "eunit", image: :failed)
           end
         end
